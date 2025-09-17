@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shiksha Sahaayak Pro - Advanced Educational Portal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: linear-gradient(145deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover, .tab-btn.active {
+            background: linear-gradient(145deg, #e74c3c, #c0392b);
+            transform: translateY(-2px);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .student-registration {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #2c3e50;
+        }
+
+        .form-group input, .form-group select {
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .btn-primary {
+            background: linear-gradient(145deg, #27ae60, #229954);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
+        }
+
+        .exam-calendar {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .exam-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            border-left: 5px solid #3498db;
+            transition: all 0.3s ease;
+        }
+
+        .exam-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .exam-title {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .exam-date {
+            color: #e74c3c;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .exam-details {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+        }
+
+        .download-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .download-btn {
+            background: linear-gradient(145deg, #9b59b6, #8e44ad);
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(155, 89, 182, 0.3);
+        }
+
+        .practice-btn {
+            background: linear-gradient(145deg, #f39c12, #e67e22);
+        }
+
+        .practice-btn:hover {
+            box-shadow: 0 5px 15px rgba(243, 156, 18, 0.3);
+        }
+
+        .student-dashboard {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .dashboard-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .stat-card {
+            background: linear-gradient(145deg, #3498db, #2980b9);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .syllabus-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .syllabus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .syllabus-card {
+            background: #f1f2f6;
+            border-radius: 10px;
+            padding: 20px;
+            border-top: 4px solid #e74c3c;
+        }
+
+        .subject-title {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .topic-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .topic-list li {
+            background: rgba(52, 152, 219, 0.1);
+            margin-bottom: 8px;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .close {
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #aaa;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+
+        .notification {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .nav-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .download-links {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎓 Shiksha Sahaayak Pro</h1>
+            <p class="subtitle">Advanced Educational Portal with Personalized Guidance</p>
+            
+            <div class="nav-tabs">
+                <button class="tab-btn active" onclick="showTab('register')">Student Registration</button>
+                <button class="tab-btn" onclick="showTab('calendar')">Exam Calendar</button>
+                <button class="tab-btn" onclick="showTab('syllabus')">Syllabus & Practice</button>
+                <button class="tab-btn" onclick="showTab('dashboard')">My Dashboard</button>
+            </div>
+        </header>
+
+        <!-- Student Registration Tab -->
+        <div class="tab-content active" id="register">
+            <div class="student-registration">
+                <h2>📝 Student Registration & Profile</h2>
+                <div id="notification" class="notification"></div>
+                
+                <form id="studentForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="studentName">Full Name</label>
+                            <input type="text" id="studentName" name="studentName" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="age">Age</label>
+                            <select id="age" name="age" required>
+                                <option value="">Select Age</option>
+                                <option value="10">10 years</option>
+                                <option value="11">11 years</option>
+                                <option value="12">12 years</option>
+                                <option value="13">13 years</option>
+                                <option value="14">14 years</option>
+                                <option value="15">15 years</option>
+                                <option value="16">16 years</option>
+                                <option value="17">17 years</option>
+                                <option value="18">18 years</option>
+                                <option value="19">19+ years</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="currentClass">Current Class</label>
+                            <select id="currentClass" name="currentClass" required>
+                                <option value="">Select Class</option>
+                                <option value="5">Class 5</option>
+                                <option value="6">Class 6</option>
+                                <option value="7">Class 7</option>
+                                <option value="8">Class 8</option>
+                                <option value="9">Class 9</option>
+                                <option value="10">Class 10</option>
+                                <option value="11">Class 11</option>
+                                <option value="12">Class 12</option>
+                                <option value="graduated">12th Pass</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="stream">Stream (if applicable)</label>
+                            <select id="stream" name="stream">
+                                <option value="">Select Stream</option>
+                                <option value="science">Science (PCM/PCB)</option>
+                                <option value="commerce">Commerce</option>
+                                <option value="arts">Arts/Humanities</option>
+                                <option value="na">Not Applicable</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="state">State</label>
+                            <select id="state" name="state" required>
+                                <option value="">Select State</option>
+                                <option value="andhra-pradesh">Andhra Pradesh</option>
+                                <option value="bihar">Bihar</option>
+                                <option value="delhi">Delhi</option>
+                                <option value="gujarat">Gujarat</option>
+                                <option value="haryana">Haryana</option>
+                                <option value="karnataka">Karnataka</option>
+                                <option value="kerala">Kerala</option>
+                                <option value="madhya-pradesh">Madhya Pradesh</option>
+                                <option value="maharashtra">Maharashtra</option>
+                                <option value="odisha">Odisha</option>
+                                <option value="punjab">Punjab</option>
+                                <option value="rajasthan">Rajasthan</option>
+                                <option value="tamil-nadu">Tamil Nadu</option>
+                                <option value="telangana">Telangana</option>
+                                <option value="uttar-pradesh">Uttar Pradesh</option>
+                                <option value="west-bengal">West Bengal</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="familyIncome">Annual Family Income</label>
+                            <select id="familyIncome" name="familyIncome" required>
+                                <option value="">Select Range</option>
+                                <option value="below-1">Below ₹1 Lakh</option>
+                                <option value="1-1.5">₹1 - 1.5 Lakh</option>
+                                <option value="1.5-3">₹1.5 - 3 Lakh</option>
+                                <option value="3-5">₹3 - 5 Lakh</option>
+                                <option value="above-5">Above ₹5 Lakh</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="careerGoal">Career Interest</label>
+                            <select id="careerGoal" name="careerGoal">
+                                <option value="">Select Interest</option>
+                                <option value="engineering">Engineering</option>
+                                <option value="medical">Medical/Healthcare</option>
+                                <option value="defense">Defense Services</option>
+                                <option value="civil-services">Civil Services</option>
+                                <option value="teaching">Teaching</option>
+                                <option value="business">Business/Commerce</option>
+                                <option value="arts">Arts/Design</option>
+                                <option value="research">Research/Science</option>
+                                <option value="undecided">Still Exploring</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email (optional)</label>
+                            <input type="email" id="email" name="email">
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary">Register & Get Personalized Recommendations</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Exam Calendar Tab -->
+        <div class="tab-content" id="calendar">
+            <div class="exam-calendar">
+                <h2>📅 Exam Calendar 2024-2025</h2>
+                <p style="color: #7f8c8d; margin-bottom: 20px;">Latest exam dates, syllabus downloads, and practice tests</p>
+                
+                <div class="calendar-grid" id="examCalendar">
+                    <!-- Exam cards will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Syllabus & Practice Tab -->
+        <div class="tab-content" id="syllabus">
+            <div class="syllabus-section">
+                <h2>📚 Syllabus & Practice Resources</h2>
+                <p style="color: #7f8c8d; margin-bottom: 20px;">Detailed syllabus and practice materials for major exams</p>
+                
+                <div class="syllabus-grid" id="syllabusGrid">
+                    <!-- Syllabus cards will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Tab -->
+        <div class="tab-content" id="dashboard">
+            <div class="student-dashboard">
+                <h2>📊 My Dashboard</h2>
+                <div id="dashboardContent">
+                    <p style="text-align: center; color: #7f8c8d; padding: 40px;">Please register first to see your personalized dashboard</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for detailed syllabus -->
+    <div id="syllabusModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // Simulated database storage (in real implementation, this would be a proper database)
+        let studentsDB = JSON.parse(localStorage.getItem('studentsDB') || '[]');
+        let currentStudent = JSON.parse(localStorage.getItem('currentStudent') || 'null');
+
+        // Exam calendar data with latest 2024-2025 dates
+        const examCalendar = [
+            {
+                name: "JEE Main 2025",
+                dates: "Session 1: Jan 22-29, 2025 | Session 2: Apr 2-9, 2025",
+                eligibility: "Class 12 passed (Age ~17-18)",
+                subjects: "Physics, Chemistry, Mathematics",
+                conductingBody: "National Testing Agency (NTA)",
+                syllabusUrl: "https://jeemain.nta.nic.in/document/syllabus-for-jee-main-2025/",
+                practiceUrl: "https://www.nta.ac.in/quiz",
+                category: "Engineering"
+            },
+            {
+                name: "NEET UG 2025",
+                dates: "May 4, 2025 (Completed)",
+                eligibility: "Class 12 passed with PCB",
+                subjects: "Physics, Chemistry, Biology (Zoology + Botany)",
+                conductingBody: "National Testing Agency (NTA)",
+                syllabusUrl: "https://neet.nta.nic.in/",
+                practiceUrl: "https://www.nta.ac.in/quiz",
+                category: "Medical"
+            },
+            {
+                name: "NMMS 2025-26",
+                dates: "November 2025 to May 2026 (State-wise)",
+                eligibility: "Class VIII students, Family income ≤₹1.5L",
+                subjects: "Mental Ability Test (MAT) + Scholastic Aptitude Test (SAT)",
+                conductingBody: "NCERT/State Education Boards",
+                syllabusUrl: "https://www.education.gov.in/en/nmms",
+                practiceUrl: "https://www.ncert.nic.in/",
+                category: "Scholarship",
+                specialNote: "Maharashtra: December 21, 2025"
+            },
+            {
+                name: "NTSE 2025",
+                dates: "Stage I: Nov 3-18, 2024 (Completed) | Stage II: Expected May 2025",
+                eligibility: "Class X students",
+                subjects: "Mental Ability Test + Scholastic Aptitude Test",
+                conductingBody: "NCERT",
+                syllabusUrl: "https://ncert.nic.in/ntse",
+                practiceUrl: "https://ncert.nic.in/",
+                category: "Scholarship"
+            },
+            {
+                name: "CUET UG 2025",
+                dates: "Expected: March-April 2025",
+                eligibility: "Class 12 passed",
+                subjects: "Varies by course/university",
+                conductingBody: "National Testing Agency (NTA)",
+                syllabusUrl: "https://cuet.nta.nic.in/",
+                practiceUrl: "https://www.nta.ac.in/quiz",
+                category: "University Entrance"
+            },
+            {
+                name: "NDA 2025",
+                dates: "NDA I: April 13, 2025 | NDA II: September 1, 2025",
+                eligibility: "Class 12 passed (Age 16.5-19.5)",
+                subjects: "Mathematics, General Ability",
+                conductingBody: "Union Public Service Commission (UPSC)",
+                syllabusUrl: "https://upsc.gov.in/",
+                practiceUrl: "https://upsc.gov.in/",
+                category: "Defense"
+            },
+            {
+                name: "JNVST 2025",
+                dates: "Expected: January 2025",
+                eligibility: "Class V students (Age 10-12)",
+                subjects: "Mental Ability, Arithmetic, Language",
+                conductingBody: "Navodaya Vidyalaya Samiti",
+                syllabusUrl: "https://navodaya.gov.in/",
+                practiceUrl: "https://navodaya.gov.in/",
+                category: "School Admission"
+            },
+            {
+                name: "AISSEE 2025",
+                dates: "Expected: December 2024 - January 2025",
+                eligibility: "Class V pass (for VI) | Class VIII pass (for IX)",
+                subjects: "Mathematics, English, General Knowledge, Intelligence",
+                conductingBody: "Sainik Schools Society via NTA",
+                syllabusUrl: "https://exams.nta.ac.in/AISSEE/",
+                practiceUrl: "https://www.nta.ac.in/quiz",
+                category: "School Admission"
+            }
+        ];
+
+        // Detailed syllabus data
+        const detailedSyllabus = {
+            "JEE Main": {
+                "Physics": [
+                    "Mechanics: Laws of Motion, Work Energy Power",
+                    "Heat & Thermodynamics: Kinetic Theory, Laws of Thermodynamics",
+                    "Waves & Sound: Simple Harmonic Motion, Wave Motion",
+                    "Electricity & Magnetism: Electrostatics, Current Electricity",
+                    "Optics: Ray Optics, Wave Optics",
+                    "Modern Physics: Dual Nature of Matter, Atoms & Nuclei"
+                ],
+                "Chemistry": [
+                    "Physical Chemistry: Atomic Structure, Chemical Bonding",
+                    "Inorganic Chemistry: Classification of Elements, p-Block Elements",
+                    "Organic Chemistry: Hydrocarbons, Organic Compounds with Functional Groups",
+                    "Environmental Chemistry: Environmental Pollution"
+                ],
+                "Mathematics": [
+                    "Algebra: Complex Numbers, Quadratic Equations, Sequences & Series",
+                    "Trigonometry: Trigonometric Functions, Inverse Trigonometric Functions",
+                    "Coordinate Geometry: Straight Lines, Circles, Conic Sections",
+                    "Calculus: Limits, Continuity, Differentiation, Integration",
+                    "Statistics & Probability: Statistics, Probability"
+                ]
+            },
+            "NEET": {
+                "Physics": [
+                    "Mechanics: Laws of Motion, Work Energy Power, Rotational Motion",
+                    "Heat & Thermodynamics: Thermal Properties, Thermodynamics",
+                    "Waves: Oscillations, Waves, Sound",
+                    "Electricity: Electrostatics, Current Electricity, Magnetic Effects",
+                    "Optics: Ray Optics, Wave Optics",
+                    "Modern Physics: Dual Nature, Atoms, Nuclei, Electronic Devices"
+                ],
+                "Chemistry": [
+                    "Physical Chemistry: Basic Concepts, Atomic Structure, Chemical Bonding",
+                    "Inorganic Chemistry: Classification, s-Block, p-Block, d & f Block Elements",
+                    "Organic Chemistry: Basic Principles, Hydrocarbons, Organic Compounds",
+                    "Bio-molecules: Carbohydrates, Proteins, Nucleic Acids"
+                ],
+                "Biology": [
+                    "Botany: Plant Kingdom, Anatomy, Physiology, Reproduction, Genetics",
+                    "Zoology: Animal Kingdom, Human Physiology, Reproduction, Genetics",
+                    "Ecology: Organisms & Environment, Ecosystem, Biodiversity"
+                ]
+            },
+            "NMMS": {
+                "Mental Ability Test": [
+                    "Pattern Completion", "Figure Matching", "Series Completion",
+                    "Analogy", "Classification", "Coding-Decoding", "Direction Sense"
+                ],
+                "Scholastic Aptitude Test": [
+                    "Mathematics: Number System, Algebra, Geometry, Mensuration",
+                    "Science: Physics, Chemistry, Biology concepts up to Class VIII",
+                    "Social Science: History, Geography, Civics, Economics",
+                    "Language: Reading Comprehension, Grammar, Vocabulary"
+                ]
+            }
+        };
+
+        // Tab functionality
+        function showTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+            
+            // Load tab-specific content
+            if (tabName === 'calendar') {
+                loadExamCalendar();
+            } else if (tabName === 'syllabus') {
+                loadSyllabusSection();
+            } else if (tabName === 'dashboard') {
+                loadDashboard();
+            }
+        }
+
+        // Student registration form
+        document.getElementById('studentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const studentData = {};
+            
+            formData.forEach((value, key) => {
+                studentData[key] = value;
+            });
+            
+            studentData.registrationDate = new Date().toISOString();
+            studentData.id = Date.now(); // Simple ID generation
+            
+            // Add to database
+            studentsDB.push(studentData);
+            currentStudent = studentData;
+            
+            // Save to localStorage (simulating database)
+            localStorage.setItem('studentsDB', JSON.stringify(studentsDB));
+            localStorage.setItem('currentStudent', JSON.stringify(currentStudent));
+            
+            showNotification('Registration successful! Check your personalized recommendations in the Dashboard.', 'success');
+            
+            // Reset form
+            e.target.reset();
+        });
+
+        // Load exam calendar
+        function loadExamCalendar() {
+            const calendarContainer = document.getElementById('examCalendar');
+            calendarContainer.innerHTML = '';
+            
+            examCalendar.forEach(exam => {
+                const examCard = document.createElement('div');
+                examCard.className = 'exam-card';
+                
+                examCard.innerHTML = `
+                    <div class="exam-title">${exam.name}</div>
+                    <div class="exam-date">📅 ${exam.dates}</div>
+                    <div class="exam-details">
+                        <strong>Eligibility:</strong> ${exam.eligibility}<br>
+                        <strong>Subjects:</strong> ${exam.subjects}<br>
+                        <strong>Conducting Body:</strong> ${exam.conductingBody}
+                        ${exam.specialNote ? `<br><strong>Special Note:</strong> ${exam.specialNote}` : ''}
+                    </div>
+                    <div class="download-links">
+                        <a href="${exam.syllabusUrl}" target="_blank" class="download-btn">📋 Syllabus</a>
+                        <a href="${exam.practiceUrl}" target="_blank" class="download-btn practice-btn">🎯 Practice Tests</a>
+                        <button onclick="downloadCalendar('${exam.name}')" class="download-btn">📅 Download Calendar</button>
+                    </div>
+                `;
+                
+                calendarContainer.appendChild(examCard);
+            });
+        }
+
+        // Load syllabus section
+        function loadSyllabusSection() {
+            const syllabusContainer = document.getElementById('syllabusGrid');
+            syllabusContainer.innerHTML = '';
+            
+            Object.keys(detailedSyllabus).forEach(examName => {
+                const syllabusCard = document.createElement('div');
+                syllabusCard.className = 'syllabus-card';
+                
+                syllabusCard.innerHTML = `
+                    <div class="subject-title">${examName} Syllabus</div>
+                    <p style="margin-bottom: 15px; color: #7f8c8d; font-size: 0.9em;">Click to view detailed syllabus and get practice resources</p>
+                    <button onclick="showDetailedSyllabus('${examName}')" class="btn-primary">View Complete Syllabus</button>
+                `;
+                
+                syllabusContainer.appendChild(syllabusCard);
+            });
+        }
+
+        // Show detailed syllabus modal
+        function showDetailedSyllabus(examName) {
+            const modal = document.getElementById('syllabusModal');
+            const modalContent = document.getElementById('modalContent');
+            
+            let content = `<h2>${examName} - Detailed Syllabus</h2>`;
+            
+            Object.keys(detailedSyllabus[examName]).forEach(subject => {
+                content += `
+                    <div style="margin-bottom: 25px;">
+                        <h3 style="color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 5px;">${subject}</h3>
+                        <ul class="topic-list">
+                            ${detailedSyllabus[examName][subject].map(topic => `<li>${topic}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+            });
+            
+            content += `
+                <div style="margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+                    <h4>📚 Recommended Study Resources:</h4>
+                    <ul style="margin-top: 10px;">
+                        <li>NCERT Books for foundational concepts</li>
+                        <li>Previous year question papers</li>
+                        <li>Online mock tests and practice papers</li>
+                        <li>Reference books by standard authors</li>
+                        <li>Video lectures from reputed educators</li>
+                    </ul>
+                </div>
+            `;
+            
+            modalContent.innerHTML = content;
+            modal.style.display = 'block';
+        }
+
+        // Close modal
+        function closeModal() {
+            document.getElementById('syllabusModal').style.display = 'none';
+        }
+
+        // Load dashboard
+        function loadDashboard() {
+            const dashboardContent = document.getElementById('dashboardContent');
+            
+            if (!currentStudent) {
+                dashboardContent.innerHTML = `
+                    <div style="text-align: center; padding: 40px;">
+                        <h3 style="color: #e74c3c; margin-bottom: 20px;">⚠️ Please Register First</h3>
+                        <p style="color: #7f8c8d; margin-bottom: 20px;">To get personalized recommendations and track your progress, please complete the registration form.</p>
+                        <button onclick="showTab('register')" class="btn-primary">Go to Registration</button>
+                    </div>
+                `;
+                return;
+            }
+            
+            const recommendations = getPersonalizedRecommendations(currentStudent);
+            const eligibleExams = getEligibleExams(currentStudent);
+            
+            dashboardContent.innerHTML = `
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">${eligibleExams.length}</div>
+                        <div class="stat-label">Eligible Exams</div>
+                    </div>
+                    <div class="stat-card" style="background: linear-gradient(145deg, #27ae60, #229954);">
+                        <div class="stat-number">${recommendations.scholarships.length}</div>
+                        <div class="stat-label">Available Scholarships</div>
+                    </div>
+                    <div class="stat-card" style="background: linear-gradient(145deg, #e74c3c, #c0392b);">
+                        <div class="stat-number">${Math.floor((new Date() - new Date(currentStudent.registrationDate)) / (1000 * 60 * 60 * 24))}</div>
+                        <div class="stat-label">Days Since Registration</div>
+                    </div>
+                    <div class="stat-card" style="background: linear-gradient(145deg, #f39c12, #e67e22);">
+                        <div class="stat-number">${getUpcomingExams(currentStudent).length}</div>
+                        <div class="stat-label">Upcoming Exams</div>
+                    </div>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 25px;">
+                    <div style="background: #f8f9fa; padding: 25px; border-radius: 15px;">
+                        <h3 style="color: #2c3e50; margin-bottom: 20px;">🎯 Personalized Recommendations</h3>
+                        <div style="margin-bottom: 20px;">
+                            <h4 style="color: #27ae60;">Priority Exams for You:</h4>
+                            <ul style="margin-top: 10px;">
+                                ${recommendations.priority.map(exam => `<li style="margin-bottom: 8px; color: #2c3e50;">${exam}</li>`).join('')}
+                            </ul>
+                        </div>
+                        <div style="margin-bottom: 20px;">
+                            <h4 style="color: #3498db;">Available Scholarships:</h4>
+                            <ul style="margin-top: 10px;">
+                                ${recommendations.scholarships.map(scholarship => `<li style="margin-bottom: 8px; color: #2c3e50;">${scholarship}</li>`).join('')}
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 style="color: #9b59b6;">Study Plan:</h4>
+                            <p style="margin-top: 10px; color: #7f8c8d;">${recommendations.studyPlan}</p>
+                        </div>
+                    </div>
+                    
+                    <div style="background: #f8f9fa; padding: 25px; border-radius: 15px;">
+                        <h3 style="color: #2c3e50; margin-bottom: 20px;">📅 Your Exam Timeline</h3>
+                        <div id="personalTimeline"></div>
+                    </div>
+                </div>
+                
+                <div style="background: #e8f5e8; padding: 25px; border-radius: 15px; margin-top: 25px;">
+                    <h3 style="color: #27ae60; margin-bottom: 15px;">💰 Financial Aid Information</h3>
+                    <p style="margin-bottom: 15px; color: #2c3e50;">${getFinancialAidInfo(currentStudent)}</p>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                        <div style="background: white; padding: 15px; border-radius: 8px;">
+                            <strong>NMMS Scholarship</strong><br>
+                            <small>₹6,000/year for Class 9-12</small>
+                        </div>
+                        <div style="background: white; padding: 15px; border-radius: 8px;">
+                            <strong>NTSE Scholarship</strong><br>
+                            <small>₹500/month + Higher Education</small>
+                        </div>
+                        <div style="background: white; padding: 15px; border-radius: 8px;">
+                            <strong>State Scholarships</strong><br>
+                            <small>Various amounts by state</small>
+                        </div>
+                        <div style="background: white; padding: 15px; border-radius: 8px;">
+                            <strong>Merit Scholarships</strong><br>
+                            <small>Based on exam performance</small>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            loadPersonalTimeline();
+        }
+
+        // Get personalized recommendations
+        function getPersonalizedRecommendations(student) {
+            const age = parseInt(student.age);
+            const currentClass = student.currentClass;
+            const income = student.familyIncome;
+            const career = student.careerGoal;
+            
+            let recommendations = {
+                priority: [],
+                scholarships: [],
+                studyPlan: ""
+            };
+            
+            // Age-based recommendations
+            if (age >= 10 && age <= 12) {
+                recommendations.priority.push("JNVST - Free quality education at Navodaya Vidyalayas");
+                recommendations.priority.push("AISSEE - Sainik School admission for defense preparation");
+                if (currentClass === "6" || currentClass === "7") {
+                    recommendations.priority.push("INSPIRE-MANAK - Science project competition");
+                }
+            }
+            
+            if (age >= 13 && age <= 15) {
+                if (income === "below-1" || income === "1-1.5") {
+                    recommendations.scholarships.push("NMMS - ₹6,000/year scholarship (HIGH PRIORITY)");
+                }
+                recommendations.priority.push("NTSE Stage I preparation - National level scholarship");
+                recommendations.priority.push("Science Olympiad - Build strong foundation in science");
+            }
+            
+            if (age >= 15 && age <= 18) {
+                if (career === "engineering") {
+                    recommendations.priority.push("JEE Main/Advanced preparation - Start NOW");
+                } else if (career === "medical") {
+                    recommendations.priority.push("NEET preparation - Physics, Chemistry, Biology focus");
+                } else if (career === "defense") {
+                    recommendations.priority.push("NDA preparation - Mathematics and General Ability");
+                }
+                recommendations.priority.push("CUET preparation - Keep university options open");
+            }
+            
+            // Study plan based on profile
+            if (age <= 12) {
+                recommendations.studyPlan = "Focus on building strong fundamentals in Mathematics and Science. Practice logical reasoning daily. Participate in school science projects.";
+            } else if (age <= 15) {
+                recommendations.studyPlan = "Maintain good academic performance. Start competitive exam preparation alongside school studies. Join study groups and take mock tests regularly.";
+            } else {
+                recommendations.studyPlan = "Intensive preparation required. Dedicate 4-6 hours daily for competitive exam preparation. Take regular mock tests and analyze performance.";
+            }
+            
+            return recommendations;
+        }
+
+        // Get eligible exams
+        function getEligibleExams(student) {
+            const age = parseInt(student.age);
+            const currentClass = student.currentClass;
+            
+            return examCalendar.filter(exam => {
+                if (age <= 12 && exam.category === "School Admission") return true;
+                if (age >= 13 && age <= 15 && exam.category === "Scholarship") return true;
+                if (age >= 15 && (exam.category === "Engineering" || exam.category === "Medical" || exam.category === "University Entrance")) return true;
+                if (age >= 16 && exam.category === "Defense") return true;
+                return false;
+            });
+        }
+
+        // Get upcoming exams
+        function getUpcomingExams(student) {
+            const eligibleExams = getEligibleExams(student);
+            const currentDate = new Date();
+            
+            return eligibleExams.filter(exam => {
+                // This is a simplified check - in real implementation, 
+                // you'd parse the actual dates and compare
+                return exam.dates.includes("2025") || exam.dates.includes("Expected");
+            });
+        }
+
+        // Load personal timeline
+        function loadPersonalTimeline() {
+            const timelineContainer = document.getElementById('personalTimeline');
+            const upcomingExams = getUpcomingExams(currentStudent);
+            
+            let timelineHTML = '';
+            upcomingExams.forEach((exam, index) => {
+                timelineHTML += `
+                    <div style="margin-bottom: 20px; padding: 15px; background: white; border-radius: 8px; border-left: 4px solid #3498db;">
+                        <div style="font-weight: 600; color: #2c3e50;">${exam.name}</div>
+                        <div style="font-size: 0.9em; color: #e74c3c; margin: 5px 0;">${exam.dates}</div>
+                        <div style="font-size: 0.85em; color: #7f8c8d;">${exam.subjects}</div>
+                        <button onclick="showDetailedSyllabus('${exam.name.split(' ')[0]}')" style="margin-top: 8px; padding: 5px 12px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 0.8em;">View Syllabus</button>
+                    </div>
+                `;
+            });
+            
+            if (timelineHTML === '') {
+                timelineHTML = '<p style="color: #7f8c8d; text-align: center;">No upcoming exams found for your profile. Please check the Exam Calendar for all available opportunities.</p>';
+            }
+            
+            timelineContainer.innerHTML = timelineHTML;
+        }
+
+        // Get financial aid information
+        function getFinancialAidInfo(student) {
+            const income = student.familyIncome;
+            
+            if (income === "below-1" || income === "1-1.5") {
+                return "Based on your family income, you are eligible for NMMS scholarship and various state-specific scholarships. These can provide significant financial support for your education.";
+            } else if (income === "1.5-3") {
+                return "You may be eligible for merit-based scholarships and some income-based support schemes. Focus on performing well in competitive exams.";
+            } else {
+                return "While you may not qualify for income-based scholarships, merit-based scholarships through NTSE and other competitive exams are available.";
+            }
+        }
+
+        // Download calendar function
+        function downloadCalendar(examName) {
+            const exam = examCalendar.find(e => e.name === examName);
+            if (!exam) return;
+            
+            const calendarData = `
+EXAM CALENDAR - ${exam.name}
+
+📅 Exam Dates: ${exam.dates}
+👤 Eligibility: ${exam.eligibility}
+📚 Subjects: ${exam.subjects}
+🏢 Conducting Body: ${exam.conductingBody}
+
+📋 Syllabus: ${exam.syllabusUrl}
+🎯 Practice Tests: ${exam.practiceUrl}
+
+⚠️  Important Notes:
+- Register on the official website
+- Check eligibility criteria carefully
+- Keep all documents ready
+- Start preparation well in advance
+
+📞 For more information, visit the official website or contact your school counselor.
+
+Generated by Shiksha Sahaayak Pro
+Date: ${new Date().toLocaleDateString()}
+            `.trim();
+            
+            const blob = new Blob([calendarData], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${examName.replace(/\s+/g, '_')}_Calendar.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+            
+            showNotification(`Calendar for ${examName} downloaded successfully!`, 'success');
+        }
+
+        // Show notification
+        function showNotification(message, type) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = `notification ${type === 'success' ? '' : 'error'}`;
+            notification.style.display = 'block';
+            
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 5000);
+        }
+
+        // Initialize dashboard on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            if (currentStudent) {
+                showTab('dashboard');
+                document.querySelector('[onclick="showTab(\'dashboard\')"]').classList.add('active');
+                document.getElementById('register').classList.remove('active');
+            }
+        });
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('syllabusModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // SQL Database Schema (for reference - would be implemented server-side)
+        const sqlSchema = `
+        -- Students table
+        CREATE TABLE students (
+            id INT PRIMARY KEY AUTO_INCREMENT,
+            student_name VARCHAR(255) NOT NULL,
+            age INT NOT NULL,
+            current_class VARCHAR(20) NOT NULL,
+            stream VARCHAR(50),
+            state VARCHAR(100) NOT NULL,
+            family_income VARCHAR(50) NOT NULL,
+            career_goal VARCHAR(100),
+            email VARCHAR(255),
+            registration_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        );
+
+        -- Exams table
+        CREATE TABLE exams (
+            id INT PRIMARY KEY AUTO_INCREMENT,
+            exam_name VARCHAR(255) NOT NULL,
+            exam_date DATE,
+            eligibility TEXT,
+            subjects TEXT,
+            conducting_body VARCHAR(255),
+            category VARCHAR(100),
+            syllabus_url TEXT,
+            practice_url TEXT
+        );
+
+        -- Student_Exam_Interests table
+        CREATE TABLE student_exam_interests (
+            id INT PRIMARY KEY AUTO_INCREMENT,
+            student_id INT,
+            exam_id INT,
+            interest_level ENUM('high', 'medium', 'low'),
+            preparation_status ENUM('not_started', 'in_progress', 'completed'),
+            FOREIGN KEY (student_id) REFERENCES students(id),
+            FOREIGN KEY (exam_id) REFERENCES exams(id)
+        );
+
+        -- Progress_Tracking table
+        CREATE TABLE progress_tracking (
+            id INT PRIMARY KEY AUTO_INCREMENT,
+            student_id INT,
+            exam_id INT,
+            mock_test_score INT,
+            test_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            subject_wise_scores JSON,
+            FOREIGN KEY (student_id) REFERENCES students(id),
+            FOREIGN KEY (exam_id) REFERENCES exams(id)
+        );
+        `;
+        
+        console.log('SQL Schema for backend implementation:', sqlSchema);
+    </script>
+</body>
+</html>
